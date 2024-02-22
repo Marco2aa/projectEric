@@ -1,0 +1,38 @@
+version: "3.8"
+services:
+  web:
+    build: .
+    volumes:
+      - ./www:/var/www/html
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    restart: always
+
+  db:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: pizzeriadb
+      MYSQL_DATABASE: pizzeriadb
+      MYSQL_USER: pizzeriadb
+      MYSQL_PASSWORD: pizzeriadb
+    volumes:
+      - db_datapizzria:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: pizzeriadb
+    ports:
+      - "8081:80"
+    depends_on:
+      - db
+    restart: always
+
+volumes:
+  db_datapizzria:

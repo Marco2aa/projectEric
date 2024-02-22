@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-color: lightgrey;
+    background-image: url(pizza.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+h1{
+    margin-top: 25px;
+    color: bisque;
+}
+
+.ajouteringredient{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.form{
+    display: flex;
+    border: solid 2px black;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 250px;
+    margin-top: 40px;
+    gap: 4px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background: transparent;
+    backdrop-filter: blur(10px);
+    box-shadow: 5px 5px  10px rgba(255, 0, 0, 0.5);
+
+}
+
+.buttonsubmit{
+    margin-top: 15px;
+    background-color: orange;
+    color: black;
+    transition: transform 0.5s ease;
+    padding: 5px;
+
+}
+
+.buttonsubmit:hover{
+    transform: translateY(-5px);
+}
+
+.form input{
+    background:transparent;
+    border: none;
+    
+    border-bottom: solid 2px black;
+    outline: none;
+}
+
+.listeingredients{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* gap: 25px;
+    margin-top: 20px;
+    border-style: solid 2px solid;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    width: 400px;
+    flex-wrap: wrap;
+
+    margin-top: 125px;;*/
+}
+
+.tableingredients{
+    display: flex;
+    gap: 20px;
+ 
+}
+
+.bodyingredients{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#ingredients{
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+}
+
+#divtable{
+
+    color: black;
+    margin-top: 15px;
+
+}
+
+.links{
+    text-decoration: none;
+    margin: 10px;
+}
+
