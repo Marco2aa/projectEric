@@ -85,4 +85,40 @@ class Pizza{
         $this->prix = $value;
     }
 
+    public function getIngredientPizza(){
+        return IngredientPizza::findByPizza($this);
+    }
+    
+    public function calculCaloriePizza() {
+        $ingredients = IngredientPizza::findByPizza($this);
+        $totalCal = 0;
+    
+        foreach ($ingredients as $ingredientPizza) {
+            $ingredient = $ingredientPizza->getIngredient(); 
+            $quantite = $ingredientPizza->getQuantite(); 
+            $caloriesParGramme = $ingredient->getCaloriesAuGramme();
+            $ingredient_calories = $caloriesParGramme * $quantite;
+            $totalCal += $ingredient_calories;
+        }
+    
+        return $totalCal;
+    }
+
+    public function calculMarge(){
+        $prixPizza = $this->getPrix();
+        $ingredientPizza = $this->getIngredientPizza();
+        $coutIngredient = 0;
+        foreach($ingredientPizza as $ip){
+            $ingredient = $ip->getIngredient();
+            $quantite = $ip->getQuantite();
+            $prixAuKilo = $ingredient->getPrix();
+            $quantiteKilo = ($quantite/1000);
+            $coutIngredient = ($prixAuKilo * $quantiteKilo);
+        }
+        $marge = ($prixPizza - $coutIngredient);
+        $marge = $marge/$prixPizza;
+        $marge = $marge*100;
+
+        return $marge;
+    }
 }

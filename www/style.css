@@ -9,15 +9,16 @@
 
 body{
     background-color: lightgrey;
-    background-image: url(pizza.jpg);
+    background-image: url(pineapple.webp);
     background-size: cover;
     background-repeat: no-repeat;
+
 }
 
 
 h1{
-    margin-top: 25px;
-    color: bisque;
+    /* margin-top: 25px; */
+    color: black;
 }
 
 .ajouteringredient{
@@ -25,7 +26,12 @@ h1{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 25px;
+    gap: 5px;
+    overflow: auto;
+    /* width: auto; */
+    /* height: auto; */
+    height: 800px;
+
 }
 
 .form{
@@ -34,9 +40,13 @@ h1{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 250px;
-    height: 250px;
-    margin-top: 40px;
+    flex-wrap: wrap;
+    padding: 25px;
+    /* width: 250px;
+    height: 250px; */
+    width: 40%;
+    height: auto;
+    margin-top: 50px;
     gap: 4px;
     border-bottom-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -106,7 +116,8 @@ h1{
 #divtable{
 
     color: black;
-    margin-top: 15px;
+    margin-top: 25px;
+    backdrop-filter: blur(20px);
 
 }
 
@@ -115,3 +126,14 @@ h1{
     margin: 10px;
 }
 
+.bg-transparent{
+    backdrop-filter: blur(20px);
+}
+/* #idtable .hover:hover{
+    backdrop-filter: blur(0px);
+} */
+
+#svgpineapple{
+    width: 60px;
+    height: 60px;
+}
