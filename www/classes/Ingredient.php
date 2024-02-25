@@ -96,4 +96,24 @@ class Ingredient{
     public function setCaloriesAuGramme($value){
         $this->caloriesAuGramme = $value;
     }
+
+    public static function topTroisIngredient() {
+        $stmt = DB::getConnection()->query("
+            SELECT id AS id_ingredient, nom AS nom_ingredient, SUM(ingredientPizza.quantite) AS total_utilisation
+            FROM ingredients
+            JOIN ingredientPizza ON ingredients.id = ingredientPizza.id_ingredient
+            GROUP BY ingredients.id
+            ORDER BY total_utilisation DESC
+            LIMIT 3
+        ");
+    
+        $ingredients = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $ingredient = new Ingredient($row['nom_ingredient'],0,0);
+            $ingredients[] = $ingredient;
+        }
+    
+        return $ingredients;
+    }
+    
 }

@@ -15,8 +15,8 @@
           ?>
           <tr>
           <td class="bg-transparent"><?php echo($ingredient->getNom());?></td>
-          <td class="bg-transparent"><?php echo($ingredient->getPrix());?></td>
-          <td class="bg-transparent"><?php echo($ingredient->getCaloriesAuGramme());?></td>
+          <td class="bg-transparent"><?php echo($ingredient->getPrix());?> Euros</td>
+          <td class="bg-transparent"><?php echo($ingredient->getCaloriesAuGramme());?> Cal/g</td>
           <td class="bg-transparent"><a class="links" href="ingredientsmodifier.php?id=<?php echo($ingredient->getId());?>">Modifier</a><a class="links" href="fonctions/fingredientssupprimer.php?id=<?php echo($ingredient->getId());?>">Supprimer</a></td>
         </tr>
       <?php } ?>

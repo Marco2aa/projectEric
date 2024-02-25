@@ -118,4 +118,71 @@ class Commande{
         }
         return $prixTotal;
     }
+
+    /*public static function calculPanierMoyen() {
+        $stmt = DB::getConnection()->query("
+            SELECT AVG(prixTotal) AS panierMoyen
+            FROM (
+                SELECT SUM(pizza.prix) AS prixTotal
+                FROM commande 
+                JOIN pizzaCommande  ON commande.id = pizzaCommande.id_commande
+                JOIN pizza  ON pizzaCommande.id_pizza = pizza.id
+                GROUP BY commande.id
+            ) AS subquery
+        ");
+    
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($row) {
+            return $row['panierMoyen'];
+        } else {
+            return 0;
+        }
+    }*/
+
+   /* public static function calculPanierMoyen() {
+        $stmt = DB::getConnection()->query("
+            SELECT AVG(prixTotal) AS panierMoyen
+            FROM (
+                SELECT SUM(pizza.prix) AS prixTotal
+                FROM commande 
+                JOIN pizzaCommande ON commande.id = pizzaCommande.id_commande
+                JOIN pizza ON pizzaCommande.id_pizza = pizza.id
+                GROUP BY pizzaCommande.id_commande
+            ) AS subquery
+        ");
+    
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($row) {
+            return $row['panierMoyen'];
+        } else {
+            return 0;
+        }
+    } */
+    
+    
+    public static function calculPanierMoyen() {
+        $stmt = DB::getConnection()->query("
+            SELECT AVG(prixTotal) AS panierMoyen
+            FROM (
+                SELECT SUM(pizza.prix * pizzaCommande.nombre) AS prixTotal
+                FROM commande 
+                JOIN pizzaCommande ON commande.id = pizzaCommande.id_commande
+                JOIN pizza ON pizzaCommande.id_pizza = pizza.id
+                GROUP BY commande.id
+            ) AS subquery
+        ");
+    
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($row) {
+            return $row['panierMoyen'];
+        } else {
+            return 0;
+        }
+    }
+    
+    
+    
 }

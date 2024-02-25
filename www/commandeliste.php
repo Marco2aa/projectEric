@@ -30,7 +30,7 @@
                 echo('<br>');
             } ?>
           </td>
-          <td class="bg-transparent"><?php echo($commande->calculPrixTotal());?></td>
+          <td class="bg-transparent"><?php echo($commande->calculPrixTotal());?> Euros</td>
           <td class="bg-transparent"><a class="links" href="commandemodifier.php?id=<?php echo($commande->getId());?>">Modifier</a><a class="links" href="fonctions/fcommandesupprimer.php?id=<?php echo($commande->getId());?>">Supprimer</a></td>
         </tr>
       <?php  } ?>

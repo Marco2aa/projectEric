@@ -23,7 +23,7 @@
             }
             ?>
         <label for="cours<?php echo($ingredient->getId())?>"><?php echo($ingredient->getNom())?></label>
-        <input type="text" name="quantite<?php echo($ingredient->getId())?>" value=<?php echo($quantite);?> />
+        <input type="text" placeholder="<?php echo($quantite);?>" name="quantite<?php echo($ingredient->getId())?>" value=<?php echo($quantite);?> />
     
                 <?php }?>
             <button class="buttonsubmit" type="submit">Modifier</button>

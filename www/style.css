@@ -137,3 +137,18 @@ h1{
     width: 60px;
     height: 60px;
 }
+
+#index{
+    position: absolute;
+    background-color: white;
+    top: 200px;
+    left: 200px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.index{
+    background-color: white;
+}

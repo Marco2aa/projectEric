@@ -108,17 +108,48 @@ class Pizza{
         $prixPizza = $this->getPrix();
         $ingredientPizza = $this->getIngredientPizza();
         $coutIngredient = 0;
+        
         foreach($ingredientPizza as $ip){
             $ingredient = $ip->getIngredient();
             $quantite = $ip->getQuantite();
             $prixAuKilo = $ingredient->getPrix();
-            $quantiteKilo = ($quantite/1000);
-            $coutIngredient = ($prixAuKilo * $quantiteKilo);
+            $quantiteKilo = $quantite / 1000;
+            $coutIngredient += $prixAuKilo * $quantiteKilo;
         }
-        $marge = ($prixPizza - $coutIngredient);
-        $marge = $marge/$prixPizza;
-        $marge = $marge*100;
-
+        
+        $marge = $prixPizza - $coutIngredient;
+        $marge = $marge / $prixPizza;
+        $marge = $marge * 100;
+    
         return $marge;
     }
+    
+
+    public static function findPizzaLaPlusVendu() {
+        $stmt = DB::getConnection()->query("
+        SELECT pizza.nom AS nom_pizza, COUNT(pizzaCommande.id_pizza)
+        FROM pizza 
+        JOIN pizzaCommande  ON pizza.id = pizzaCommande.id_pizza
+        WHERE pizzaCommande.id_pizza = (
+            SELECT id_pizza
+            FROM pizzaCommande
+            GROUP BY id_pizza
+            ORDER BY COUNT(id_pizza) DESC
+            LIMIT 1
+        )
+        GROUP BY pizza.id
+            
+        ");
+    
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($row) {
+            $pizza = new Pizza($row['nom_pizza'], 0);
+            return $pizza;
+        } else {
+            return null; 
+        }
+    }
+    
 }
+

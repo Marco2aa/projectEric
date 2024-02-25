@@ -79,6 +79,29 @@ class Client {
     public function setNomClient($nom) {
         $this->nom = $nom;
     }
+
+    public static function findLeGlouton() {
+        $stmt = DB::getConnection()->query("
+            SELECT client.nom AS nom_client, COUNT(pizzaCommande.id_pizza) as total
+            FROM client 
+            JOIN commande  ON client.id_client = commande.id_client
+            JOIN pizzaCommande  ON commande.id = pizzaCommande.id_commande
+            GROUP BY client.id_client
+            ORDER BY total DESC
+            LIMIT 1
+        ");
+    
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($row) {
+            $client = new Client($row['nom_client']);
+            return $client;
+        } else {
+            return null; 
+        }
+    }
 }
+
+
 
 ?>

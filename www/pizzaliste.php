@@ -28,9 +28,8 @@
               echo('<br>');
             } ?>
           </td>
-          <td class="bg-transparent"><?php echo($pizza->calculCaloriePizza());?></td>
+          <td class="bg-transparent"><?php echo($pizza->calculCaloriePizza());?> Cal</td>
           <td class="bg-transparent"><?php echo($pizza->calculMarge());?>%</td>
-          <td class="bg-transparent"><?php echo($pizza->getPrix());?></td>
           <td class="bg-transparent"><a class="links" href="pizzamodifier.php?id=<?php echo($pizza->getId());?>">Modifier</a><a class="links" href="fonctions/fpizzasupprimer.php?id=<?php echo($pizza->getId());?>">Supprimer</a></td>
         </tr>
       <?php  } ?>
